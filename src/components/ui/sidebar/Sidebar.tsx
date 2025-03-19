@@ -17,6 +17,7 @@ import { UserType } from '@/features/auth';
 import LogoDark from '@/assets/logo-dark.svg';
 import LogoWhite from '@/assets/logo-white.svg';
 import React from 'react';
+import { clearWidgets } from '@/features/widget/widgetSlice';
 
 const Sidebar = () => {
 	const { darkMode } = useTheme();
@@ -27,6 +28,7 @@ const Sidebar = () => {
 
 	const handleLogout = () => {
 		dispatch(clearCredentials());
+		dispatch(clearWidgets());
 		navigate('/login');
 	};
 

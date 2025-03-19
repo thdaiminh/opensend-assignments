@@ -51,14 +51,14 @@ const WidgetGridLayout = (props: WidgetGridLayoutProps) => {
 	};
 
 	return (
-		<div className={'relative flex-1 overflow-x-hidden'}>
+		<div className={'relative flex-1 overflow-hidden'}>
 			<WidgetGridLayer isLayerVisible={isLayerVisible} gridSize={gridSize} containerWidth={width} cols={breakpointCols} padding={gap} />
 
 			{layouts && (
 				<ResponsiveGridLayout
 					cols={cols}
 					layouts={layouts}
-					autoSize={false}
+					autoSize={true}
 					margin={[gap, gap]}
 					containerPadding={[0, 0]}
 					rowHeight={gridSize}
@@ -72,7 +72,7 @@ const WidgetGridLayout = (props: WidgetGridLayoutProps) => {
 					onResizeStart={handleEditingEvent}
 					onResizeStop={handleStopEvent}
 					resizeHandle={
-						<div className="react-resizable-handle absolute bottom-0 right-0 z-2 rotate-140 cursor-nw-resize invisible group-hover:visible">
+						<div className="react-resizable-handle absolute bottom-0 right-0 z-2 rotate-140 cursor-nw-resize visible lg:invisible group-hover:visible">
 							<IoMdArrowUp />
 						</div>
 					}

@@ -15,11 +15,15 @@ const MetricContainer = React.forwardRef<HTMLDivElement, any>((props, ref) => {
 	const { user } = useAppSelector((state) => state.auth);
 	const isAdmin = user?.role === UserType.Admin;
 
-	const editMetric = () => {
+	const editMetric = (e: React.MouseEvent<SVGElement, MouseEvent> | React.TouchEvent<SVGElement>) => {
+		e.stopPropagation();
+		e.preventDefault();
 		openMetricModal(widget);
 	};
 
-	const removeMetric = () => {
+	const removeMetric = (e: React.MouseEvent<SVGElement, MouseEvent> | React.TouchEvent<SVGElement>) => {
+		e.stopPropagation();
+		e.preventDefault();
 		dispatch(removeWidgetLayout(widget.id));
 		dispatch(removeWidget(widget.id));
 	};
@@ -31,21 +35,23 @@ const MetricContainer = React.forwardRef<HTMLDivElement, any>((props, ref) => {
 
 	return (
 		<div
-			className={`${className} group w-full h-full rounded-sm bg-base-300 p-4 hover:bg-base-200 relative`}
+			className={`${className} group w-full h-full rounded-sm bg-base-300 p-4 hover:bg-base-100 relative pointer-events-auto`}
 			ref={ref}
-			onMouseDown={onMouseDown}
-			onMouseUp={onMouseUp}
-			onTouchEnd={onTouchEnd}
 			style={style}
 		>
 			{isAdmin && (
-				<div className={'absolute top-1 right-1 flex gap-4 p-2 rounded-full bg-base-100 invisible group-hover:visible'}>
-					<IoPencil className={'w-4 h-4 cursor-pointer'} onClick={editMetric} />
-					<IoTrash className={'w-4 h-4 cursor-pointer'} onClick={removeMetric} />
+				<div className={'absolute top-1 right-1 flex gap-4 p-2 rounded-full bg-base-200 visible lg:invisible group-hover:visible'}>
+					<IoPencil className={'w-4 h-4 cursor-pointer'} onClick={editMetric} onTouchEnd={editMetric} />
+					<IoTrash className={'w-4 h-4 cursor-pointer'} onClick={removeMetric} onTouchEnd={removeMetric} />
 				</div>
 			)}
 
-			<div className={'flex flex-col w-full h-full justify-center items-center gap-6'}>
+			<div
+				className={`flex flex-col w-full h-full justify-center items-center gap-6`}
+				onMouseDown={onMouseDown}
+				onMouseUp={onMouseUp}
+				onTouchEnd={onTouchEnd}
+			>
 				<DynamicText ref={dynamicTextRef} text={widget.title} minFontSize={10} maxFontSize={36} className={'text-center select-none'} />
 				<DynamicText
 					ref={dynamicTextRef2}

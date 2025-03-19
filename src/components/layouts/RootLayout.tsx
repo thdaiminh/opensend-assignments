@@ -28,7 +28,7 @@ export const RootLayout = () => {
 	useEffect(() => {
 		dispatch(getWidgetLayout());
 		dispatch(getWidgets());
-	}, []);
+	}, [user]);
 
 	// Show loading state while fetching user
 	if (isLoading || isLoadingStoreInfo) {

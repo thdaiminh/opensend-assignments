@@ -71,10 +71,16 @@ const widgetSlice = createSlice({
 				state.widgets = state.widgets.filter((widget) => widget.id !== widgetId);
 				localStorage.setItem('widgets', JSON.stringify(state.widgets));
 			}
+		},
+		clearWidgets: (state) => {
+			state.widgets = null;
+			localStorage.removeItem('widgets');
+			state.layouts = null;
+			localStorage.removeItem('layouts');
 		}
 	}
 });
 
-export const { addWidgetToLayout, getWidgetLayout, setWidgetLayout, removeWidgetLayout, getWidgets, updateWidget, removeWidget } =
+export const { addWidgetToLayout, getWidgetLayout, setWidgetLayout, removeWidgetLayout, getWidgets, updateWidget, removeWidget, clearWidgets } =
 	widgetSlice.actions;
 export default widgetSlice.reducer;

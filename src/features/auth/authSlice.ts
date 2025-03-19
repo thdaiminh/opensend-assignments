@@ -24,8 +24,6 @@ const authSlice = createSlice({
 			state.tokens = null;
 			state.isAuthenticated = false;
 			localStorage.removeItem('tokens');
-			localStorage.removeItem('layouts');
-			localStorage.removeItem('widgets');
 			authApi.util.invalidateTags(['User', 'UserStore']);
 		}
 	},
