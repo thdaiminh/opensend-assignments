@@ -1,0 +1,196 @@
+@import "tailwindcss";
+
+@plugin "daisyui" {
+  themes: light --default, dark --prefersdark;
+}
+
+@plugin "daisyui/theme" {
+  name: "light";
+  default: true;
+  /* Light theme variables */
+  --color-base-100: #e6e6e6;
+  --color-base-content: #2b2b2b;
+  --color-primary: #288364;
+  --color-accent: #fafaf5;
+}
+
+@plugin "daisyui/theme" {
+  name: "dark";
+  --color-primary: #288364;
+  --color-accent: #1d1f21;
+}
+
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
+
+@theme {
+  /* Custom font */
+  --font-darkerGrotesque: "Darker Grotesque";
+
+  /* Breakpoints*/
+  --breakpoint-xs: 30rem;
+}
+
+@theme {
+  --color-warm-black: #181a1b;
+  --color-white: #ffffff;
+  --color-egg-shell: #f7f7f7;
+  --color-beige: #f0e4d6;
+  --color-green: #2e8b57;
+  --color-dark-green: #0e3300;
+  --color-lime-green: #b2ff00;
+  --color-success-3: #0e3300;
+  --color-success-2: #2e8b57;
+  --color-success-1: #c6f4ff;
+  --color-caution-3: #66cc00;
+  --color-caution-2: #7f9c3f;
+  --color-caution-1: #d9ffcc;
+  --color-error-3: #ff0033;
+  --color-error-2: #ff6666;
+  --color-error-1: #ffcccc;
+  --color-gray-10: #010101;
+  --color-gray-9: #111111;
+  --color-gray-8: #444444;
+  --color-gray-7: #555555;
+  --color-gray-6: #808080;
+  --color-gray-5: #404040;
+  --color-gray-4: #c7c5b8;
+  --color-gray-3: #d9d9d9;
+  --color-gray-2: #e5e5e5;
+  --color-gray-1: #f2f2f2;
+  --color-light-tan: #f0e4d6;
+  --color-dark-tan: #c2b280;
+
+  /*--color-base-100: oklch(98% 0.02 240);*/
+  /*--color-base-200: oklch(95% 0.03 240);*/
+  /*--color-base-300: oklch(92% 0.04 240);*/
+  /*--color-base-content: oklch(20% 0.05 240);*/
+  /*--color-primary: oklch(55% 0.3 240);*/
+  /*--color-primary-content: oklch(98% 0.01 240);*/
+  /*--color-secondary: oklch(70% 0.25 200);*/
+  /*--color-secondary-content: oklch(98% 0.01 200);*/
+  /*--color-accent: oklch(65% 0.25 160);*/
+  /*--color-accent-content: oklch(98% 0.01 160);*/
+  /*--color-neutral: oklch(50% 0.05 240);*/
+  /*--color-neutral-content: oklch(98% 0.01 240);*/
+  /*--color-info: oklch(70% 0.2 220);*/
+  /*--color-info-content: oklch(98% 0.01 220);*/
+  /*--color-success: oklch(65% 0.25 140);*/
+  /*--color-success-content: oklch(98% 0.01 140);*/
+  /*--color-warning: oklch(80% 0.25 80);*/
+  /*--color-warning-content: oklch(20% 0.05 80);*/
+  /*--color-error: oklch(65% 0.3 30);*/
+  /*--color-error-content: oklch(98% 0.01 30);*/
+}
+
+[data-theme="light"] {
+  .input-primary {
+    @apply bg-base-200 border-gray-6;
+  }
+  .input-primary:hover {
+    @apply border-gray-9;
+  }
+  .input-primary:focus-within{
+    @apply border-primary;
+  }
+  .input-primary>input::placeholder{
+    @apply text-base-content opacity-50;
+  }
+
+  .input-neutral {
+    @apply bg-white border-gray-4;
+  }
+  .input-neutral:hover {
+    @apply border-gray-9;
+  }
+  .input-neutral:focus-within{
+    @apply border-primary;
+  }
+  .input-neutral>input::placeholder{
+    @apply text-base-content opacity-50;
+  }
+
+  .textarea-neutral {
+    @apply bg-white border-gray-4;
+  }
+  .textarea-neutral:hover {
+    @apply border-gray-9;
+  }
+  .textarea-neutral:focus-within{
+    @apply border-primary;
+  }
+
+  .input-error {
+    @apply border-error-2;
+  }
+  .input-error:hover {
+    @apply border-error-3;
+  }
+  .input-error:focus-within{
+    @apply border-error-3;
+  }
+
+  .btn-neutral {
+    @apply border-gray-4 text-base-content;
+  }
+  .btn-neutral:hover {
+    @apply border-gray-9 bg-base-200;
+  }
+
+  .menu-active {
+    @apply bg-base-content/10 text-base-content shadow-none;
+  }
+}
+
+
+[data-theme="dark"] {
+  .input-primary {
+    @apply bg-base-200 border-gray-6;
+  }
+  .input-primary:hover {
+    @apply border-gray-2;
+  }
+  .input-primary:focus-within{
+    @apply border-primary;
+  }
+  .input-primary>input::placeholder{
+    @apply text-base-content opacity-50;
+  }
+
+  .input-neutral {
+    @apply bg-base-100 border-gray-6;
+  }
+
+  .textarea-neutral {
+    @apply bg-base-100 border-gray-6;
+  }
+
+
+  .btn-neutral {
+    @apply border-gray-6 text-base-content;
+  }
+  .btn-neutral:hover {
+    @apply border-gray-2 text-base-200;
+  }
+}
+
+.react-resizable-handle:after {
+  @apply hidden;
+}
+
+div.react-grid-item.react-grid-placeholder {
+  @apply bg-primary rounded-md;
+}
+
+.react-resizable-handle {
+  @apply bg-none p-0 bg-transparent;
+  background-image: none !important;
+}
+
+
+body {
+  margin: 0;
+  font-family: Inter, ui-sans-serif, system-ui;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
